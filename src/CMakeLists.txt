@@ -43,6 +43,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Widgets/TimerView.vala
     Pages/TaskListPage.vala
     Pages/SelectionPage.vala
+    Dialogs/FileConflictDialog.vala
     Dialogs/DialogUtils.vala
     Dialogs/SettingsDialog.vala
     Dialogs/SettingsPages/AppearancePage.vala
