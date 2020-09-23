@@ -23,6 +23,7 @@ class GOFI.TodoListInfoRow: DragListRow {
     private Gtk.ToggleButton options_button;
     private Gtk.EventBox event_box;
     private Gtk.Box center_box;
+    private Gtk.Popover popover;
 
     public TodoListInfo info {
         get;
@@ -86,7 +87,7 @@ class GOFI.TodoListInfoRow: DragListRow {
             return;
         }
         showing_menu = true;
-        var popover = new Gtk.Popover (options_button);
+        popover = new Gtk.Popover (options_button);
         popover.position = Gtk.PositionType.BOTTOM;
 
         var popover_cont = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -108,13 +109,16 @@ class GOFI.TodoListInfoRow: DragListRow {
         popover.add (popover_cont);
         Utils.popover_show (popover);
 
-        popover.closed.connect ( () => {
-            option_revealer.reveal_child = false;
-            options_button.active = false;
-            showing_menu = false;
+        popover.closed.connect (on_popover_closed);
+    }
 
-            popover.destroy ();
-        });
+    private void on_popover_closed () {
+        option_revealer.reveal_child = false;
+        options_button.active = false;
+        showing_menu = false;
+
+        popover.destroy ();
+        popover = null;
     }
 
     private void update () {

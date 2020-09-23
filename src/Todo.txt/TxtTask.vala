@@ -222,6 +222,11 @@ class GOFI.TXT.TxtTask : TodoTask {
 
     public void update_from_simple_txt (string descr) {
         var parts = descr.split (" ");
+        if (parts[0] == null) {
+            description = "";
+            priority = NO_PRIO;
+            return;
+        }
         assert (parts[0] != null);
         uint index = 0;
 
@@ -229,11 +234,6 @@ class GOFI.TXT.TxtTask : TodoTask {
 
         duration = 0;
         set_descr_parts (parse_description (parts, index));
-
-        if (description == "") {
-            warning ("Task does not have a description: \"%s\"", descr);
-            return;
-        }
     }
 
     public string parts_to_description () {
