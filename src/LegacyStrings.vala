@@ -5,5 +5,9 @@ string[] unused_strings_1_8 {
     _("What should be done with these files?"),
     _("Overwrite"),
     _("The configured folder is already in use by another list."),
-    "<a href=\"http://todotxt.com\">Todo.txt</a> "+ _("folder")
+    "<a href=\"http://todotxt.com\">Todo.txt</a> "+ _("folder"),
+    _("Dark theme"),
+
+    /// For versions <= 1.8, argument 1: filename, argument 2: error message
+    _("Couldn't properly import settings from %s: %s")
 };
